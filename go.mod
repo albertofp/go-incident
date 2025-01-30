@@ -1,5 +1,5 @@
-module github.com/andygrunwald/go-incident
+module github.com/albertofp/go-incident
 
-go 1.18
+go 1.23
 
 require github.com/google/go-querystring v1.1.0

@@ -58,4 +58,23 @@ func (s *IncidentsService) Get(ctx context.Context, id string) (*IncidentRespons
 	return v, resp, nil
 }
 
-// TODO Add Create Incident: https://api-docs.incident.io/#operation/Incidents_Create
+// API docs: https://api-docs.incident.io/tag/Incidents-V2#operation/Incidents%20V2_Create
+func (s *IncidentsService) Create(ctx context.Context, opts *IncidentCreateOptions) (*IncidentResponse, *Response, error) {
+	u, err := addOptions("incidents", opts)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	req, err := s.client.NewRequest("POST", u, nil)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	incident := IncidentResponse{}
+	resp, err := s.client.Do(ctx, req, &incident)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return &incident, resp, nil
+}
