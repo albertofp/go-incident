@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/andygrunwald/go-incident"
+	"github.com/albertofp/go-incident"
 )
 
 func main() {

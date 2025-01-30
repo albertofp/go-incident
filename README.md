@@ -1,6 +1,6 @@
 # go-incident: Go client library for [Incident.io](https://incident.io/)
 
-[![GoDoc](https://img.shields.io/static/v1?label=godoc&message=reference&color=blue)](https://pkg.go.dev/github.com/andygrunwald/go-incident)
+[![GoDoc](https://img.shields.io/static/v1?label=godoc&message=reference&color=blue)](https://pkg.go.dev/github.com/albertofp/go-incident)
 
 Go client library for accessing the [Incident.io](https://incident.io/) [API](https://api-docs.incident.io/).
 
@@ -9,7 +9,7 @@ Go client library for accessing the [Incident.io](https://incident.io/) [API](ht
 go-incident is compatible with modern Go releases in module mode, with Go installed:
 
 ```bash
-go get github.com/andygrunwald/go-incident
+go get github.com/albertofp/go-incident
 ```
 
 will resolve and add the package to the current development module, along with its dependencies.
@@ -17,7 +17,7 @@ will resolve and add the package to the current development module, along with i
 Alternatively the same can be achieved if you use import in a package:
 
 ```go
-import "github.com/andygrunwald/go-incident"
+import "github.com/albertofp/go-incident"
 ```
 
 and run `go get` without parameters.
@@ -25,13 +25,13 @@ and run `go get` without parameters.
 Finally, to use the top-of-trunk version of this repo, use the following command:
 
 ```bash
-go get github.com/andygrunwald/go-incident@main
+go get github.com/albertofp/go-incident@main
 ```
 
 ## Usage
 
 ```go
-import "github.com/andygrunwald/go-incident"
+import "github.com/albertofp/go-incident"
 ```
 
 Construct a new Incident.io client, then use the various services on the client to access different parts of the [Incident.io API](https://api-docs.incident.io/).
@@ -66,7 +66,7 @@ The services of a client divide the API into logical chunks and correspond to th
 NOTE: Using the [context](https://pkg.go.dev/context) package, one can easily pass cancelation signals and deadlines to various services of the client for handling a request.
 In case there is no context available, then `context.Background()` can be used as a starting point.
 
-For more sample code snippets, head over to the [example](https://github.com/andygrunwald/go-incident/tree/master/example) directory.
+For more sample code snippets, head over to the [example](https://github.com/albertofp/go-incident/tree/master/example) directory.
 
 ### Authentication
 
@@ -84,7 +84,7 @@ client := incident.NewClient(apiKey, nil)
 
 ### Errors
 
-Errors provided by the Incident.io API will be mapped to the [ErrorResponse](https://pkg.go.dev/github.com/andygrunwald/go-incident#ErrorResponse) type and can be investigated further:
+Errors provided by the Incident.io API will be mapped to the [ErrorResponse](https://pkg.go.dev/github.com/albertofp/go-incident#ErrorResponse) type and can be investigated further:
 
 ```go
 // Do a API call ...
@@ -103,7 +103,7 @@ See [Making requests > Errors in the Incident.ip API docs](https://api-docs.inci
 
 Some requests support pagination.
 Pagination options are described in the options per API call once supported.
-The returned data contains a [PaginationMeta](https://pkg.go.dev/github.com/andygrunwald/go-incident#PaginationMeta) struct with paging information.
+The returned data contains a [PaginationMeta](https://pkg.go.dev/github.com/albertofp/go-incident#PaginationMeta) struct with paging information.
 
 ```go
 apiKey := "<my-secret-api-key>"
