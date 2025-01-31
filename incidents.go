@@ -3,6 +3,8 @@ package incident
 import (
 	"context"
 	"fmt"
+
+	"github.com/google/uuid"
 )
 
 // IncidentsService handles communication with the incident related
@@ -60,6 +62,10 @@ func (s *IncidentsService) Get(ctx context.Context, id string) (*IncidentRespons
 
 // API docs: https://api-docs.incident.io/tag/Incidents-V2#operation/Incidents%20V2_Create
 func (s *IncidentsService) Create(ctx context.Context, opts *IncidentCreateOptions) (*IncidentResponse, *Response, error) {
+	if opts.IdempotencyKey == "" {
+		opts.IdempotencyKey = uuid.New().String()
+	}
+
 	body, err := createBody(opts)
 	if err != nil {
 		return nil, nil, err

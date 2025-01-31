@@ -4,4 +4,7 @@ replace github.com/andygrunwald/go-incident => github.com/albertofp/go-incident 
 
 go 1.23.4
 
-require github.com/google/go-querystring v1.1.0
+require (
+	github.com/google/go-querystring v1.1.0
+	github.com/google/uuid v1.6.0
+)
