@@ -19,7 +19,7 @@ import (
 const (
 	// API URL
 	// Right now, the API is only available in v1 and as a cloud version.
-	apiURL = "https://api.incident.io/v1/"
+	apiURL = "https://api.incident.io/v2/"
 
 	// User Agent that will be used for HTTP requests.
 	// Should help to identify the source of the calls in case of emergency.
