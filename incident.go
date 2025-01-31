@@ -117,6 +117,23 @@ func addOptions(s string, opts interface{}) (string, error) {
 	return u.String(), nil
 }
 
+func createBody(opts interface{}) (io.Reader, error) {
+	var buf io.ReadWriter
+	if opts == nil {
+		return buf, nil
+	}
+
+	buf = &bytes.Buffer{}
+	enc := json.NewEncoder(buf)
+	enc.SetEscapeHTML(false)
+	err := enc.Encode(opts)
+	if err != nil {
+		return nil, err
+	}
+
+	return buf, nil
+}
+
 // NewRequest creates an API request. A relative URL can be provided in urlStr,
 // in which case it is resolved relative to the BaseURL of the Client.
 // Relative URLs should always be specified without a preceding slash. If

@@ -60,12 +60,12 @@ func (s *IncidentsService) Get(ctx context.Context, id string) (*IncidentRespons
 
 // API docs: https://api-docs.incident.io/tag/Incidents-V2#operation/Incidents%20V2_Create
 func (s *IncidentsService) Create(ctx context.Context, opts *IncidentCreateOptions) (*IncidentResponse, *Response, error) {
-	u, err := addOptions("incidents", opts)
+	body, err := createBody(opts)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	req, err := s.client.NewRequest("POST", u, nil)
+	req, err := s.client.NewRequest("POST", "incidents", body)
 	if err != nil {
 		return nil, nil, err
 	}
