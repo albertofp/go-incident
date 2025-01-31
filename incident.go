@@ -117,21 +117,23 @@ func addOptions(s string, opts interface{}) (string, error) {
 	return u.String(), nil
 }
 
-func createBody(opts interface{}) (io.Reader, error) {
-	var buf io.ReadWriter
+func createBody(opts interface{}) (interface{}, error) {
 	if opts == nil {
-		return buf, nil
+		return map[string]interface{}{}, nil
 	}
 
-	buf = &bytes.Buffer{}
-	enc := json.NewEncoder(buf)
-	enc.SetEscapeHTML(false)
-	err := enc.Encode(opts)
+	jsonBytes, err := json.Marshal(opts)
 	if err != nil {
 		return nil, err
 	}
 
-	return buf, nil
+	var jsonMap map[string]interface{}
+	err = json.Unmarshal(jsonBytes, &jsonMap)
+	if err != nil {
+		return nil, err
+	}
+
+	return jsonMap, nil
 }
 
 // NewRequest creates an API request. A relative URL can be provided in urlStr,
