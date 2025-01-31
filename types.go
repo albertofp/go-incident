@@ -66,16 +66,17 @@ type IncidentsListOptions struct {
 }
 
 type IncidentCreateOptions struct {
-	IdempotencyKey   string `json:"idempotency_key" validate:"required"`
-	IncidentStatusID string `json:"incident_status_id,omitempty"`
-	IncidentTypeID   string `json:"incident_type_id,omitempty"`
-	Mode             string `json:"mode,omitempty" validate:"oneof=standard retrospective test tutorial"`
-	Name             string `json:"name,omitempty"`
-	SeverityID       string `json:"severity_id,omitempty"`
-	SlackChannel     string `json:"slack_channel_name_override,omitempty"`
-	SlackTeamID      string `json:"slack_team_id,omitempty"`
-	Summary          string `json:"summary,omitempty"`
-	Visibility       string `json:"visibility" validate:"required,oneof=public private"`
+	IdempotencyKey     string             `json:"idempotency_key" validate:"required"`
+	IncidentStatusID   string             `json:"incident_status_id,omitempty"`
+	IncidentTypeID     string             `json:"incident_type_id,omitempty"`
+	Mode               string             `json:"mode,omitempty" validate:"oneof=standard retrospective test tutorial"`
+	Name               string             `json:"name,omitempty"`
+	SeverityID         string             `json:"severity_id,omitempty"`
+	SlackChannel       string             `json:"slack_channel_name_override,omitempty"`
+	SlackTeamID        string             `json:"slack_team_id,omitempty"`
+	Summary            string             `json:"summary,omitempty"`
+	Visibility         string             `json:"visibility" validate:"required,oneof=public private"`
+	CustomFieldEntries []CustomFieldEntry `json:"custom_field_entries,omitempty"`
 }
 
 type Incident struct {
