@@ -150,6 +150,8 @@ type PaginationMeta struct {
 type CustomFieldEntry struct {
 	CustomField CustomFieldTypeInfo `json:"custom_field" yaml:"custom_field"`
 
+	CustomFieldId string `json:"custom_field_id" yaml:"custom_field_id"`
+
 	// List of custom field values set on this entry
 	Values []CustomFieldValue `json:"values" yaml:"values"`
 }
@@ -188,6 +190,8 @@ type CustomFieldOption struct {
 type CustomFieldValue struct {
 	// Link value
 	ValueLink string `json:"value_link,omitempty" yaml:"value_link"`
+
+	ValueOptionID string `json:"value_option_id,omitempty" yaml:"value_option_id"`
 
 	// Numeric value
 	ValueNumeric string             `json:"value_numeric,omitempty" yaml:"value_numeric"`
