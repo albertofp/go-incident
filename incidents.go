@@ -66,6 +66,14 @@ func (s *IncidentsService) Create(ctx context.Context, opts *IncidentCreateOptio
 		opts.IdempotencyKey = uuid.New().String()
 	}
 
+	if opts.Visibility == "" {
+		opts.Visibility = "public"
+	}
+
+	if opts.Mode == "" {
+		opts.Mode = "real"
+	}
+
 	body, err := createBody(opts)
 	if err != nil {
 		return nil, nil, err
