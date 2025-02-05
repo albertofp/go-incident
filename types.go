@@ -113,7 +113,7 @@ type Incident struct {
 	SlackChannelName string `json:"slack_channel_name,omitempty" yaml:"slack_channel_name"`
 
 	// Current status of the incident
-	Status string `json:"status" yaml:"status"`
+	IncidentStatus IncidentStatus `json:"incident_status" yaml:"incident_status"`
 
 	// Detailed description of the incident
 	Summary string `json:"summary,omitempty" yaml:"summary"`
@@ -132,7 +132,7 @@ type Incident struct {
 }
 
 type IncidentsList struct {
-	Incidents      []Incident      `json:"incidents" yaml:"incidents"`
+	Incidents      []Incident      `json:"incidents"                 yaml:"incidents"`
 	PaginationMeta *PaginationMeta `json:"pagination_meta,omitempty" yaml:"pagination_meta"`
 }
 
@@ -203,7 +203,7 @@ type CustomFieldValue struct {
 
 type IncidentRoleAssignment struct {
 	Assignee *User        `json:"assignee,omitempty" yaml:"assignee"`
-	Role     IncidentRole `json:"role" yaml:"role"`
+	Role     IncidentRole `json:"role"               yaml:"role"`
 }
 
 type User struct {
@@ -254,7 +254,7 @@ type IncidentRole struct {
 
 type Actor struct {
 	ApiKey *APIKey `json:"api_key,omitempty" yaml:"api_key"`
-	User   *User   `json:"user,omitempty" yaml:"user"`
+	User   *User   `json:"user,omitempty"    yaml:"user"`
 }
 
 type Severity struct {
@@ -416,4 +416,11 @@ type ExternalIssueReference struct {
 
 type ActionResponse struct {
 	Action Action `json:"action" yaml:"action"`
+}
+
+type IncidentStatus struct {
+	Name        string `json:"name"        yaml:"name"`
+	Rank        int    `json:"rank"        yaml:"rank"`
+	Description string `json:"description" yaml:"description"`
+	Id          string `json:"id"          yaml:"id"`
 }
