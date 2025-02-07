@@ -71,7 +71,7 @@ func (s *IncidentsService) Create(ctx context.Context, opts *IncidentCreateOptio
 	}
 
 	if opts.Mode == "" {
-		opts.Mode = "real"
+		opts.Mode = "standard"
 	}
 
 	body, err := createBody(opts)
